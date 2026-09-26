@@ -57,7 +57,10 @@ nixpkgs.config.permittedInsecurePackages = [
   # Enable the Cinnamon Desktop Evironment
    services.xserver.displayManager.lightdm.enable = true;
    services.xserver.desktopManager.cinnamon.enable = true;
-  
+ 
+  #i3wm
+   services.xserver.windowManager.i3.enable = true; 
+ 
   # Enable the MATE Desktop Environment
   # services.xserver.displayManager.lightdm.enable = true;
   # services.xserver.desktopManager.mate.enable = true;
@@ -100,7 +103,14 @@ nixpkgs.config.permittedInsecurePackages = [
     #  thunderbird
     ];
   };
-  
+ 
+  #flatpak
+  services.flatpak.enable = true;
+
+  #virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+ 
   #Steam
   programs.steam.enable = true;
 
@@ -126,7 +136,6 @@ nixpkgs.config.permittedInsecurePackages = [
   vivaldi
   libreoffice-stable
   gimp
-  github-desktop
   vivaldi-ffmpeg-codecs
   kitty
   wine
@@ -148,8 +157,12 @@ nixpkgs.config.permittedInsecurePackages = [
   gnome-disk-utility
   steamcmd
   steam-run
-  shotcut  
- ];
+  shotcut
+  rofi
+  feh
+  i3status
+  i3blocks
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
