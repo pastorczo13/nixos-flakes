@@ -42,8 +42,8 @@ nixpkgs.config.permittedInsecurePackages = [
     LC_TIME = "en_US.UTF-8";
   };
 
-    
 
+  
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -58,11 +58,11 @@ nixpkgs.config.permittedInsecurePackages = [
    services.xserver.displayManager.lightdm.enable = true;
    services.xserver.desktopManager.cinnamon.enable = true;
  
-  #i3wm
-   services.xserver.windowManager.i3.enable = true; 
+  # i3wm
+  # services.xserver.windowManager.i3.enable = true; 
  
   # Enable the MATE Desktop Environment
-  # services.xserver.displayManager.lightdm.enable = true;
+  #  services.xserver.displayManager.lightdm.enable = true;
   # services.xserver.desktopManager.mate.enable = true;
 
 
@@ -106,6 +106,10 @@ nixpkgs.config.permittedInsecurePackages = [
  
   #flatpak
   services.flatpak.enable = true;
+  
+  #xdg
+  xdg.portal.enable = true;  
+
 
   #virt-manager
   virtualisation.libvirtd.enable = true;
@@ -144,10 +148,10 @@ nixpkgs.config.permittedInsecurePackages = [
   discord
   adwsteamgtk
   nheko
-  # mate-tweak
-   mint-y-icons
-   mint-x-icons
-   mint-l-icons
+# mate-tweak
+  mint-y-icons
+  mint-x-icons
+  mint-l-icons
   dracula-theme
   dracula-icon-theme
   gnome-keyring
@@ -162,7 +166,8 @@ nixpkgs.config.permittedInsecurePackages = [
   feh
   i3status
   i3blocks
-  ];
+  cmake
+ ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
