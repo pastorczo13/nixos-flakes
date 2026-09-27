@@ -18,7 +18,7 @@ nixpkgs.config.permittedInsecurePackages = [
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "pastors-nixos";
-  networking.wireless.enable = true; 
+  networking.wireless.enable = true;
 
 
   # Enable networking
@@ -43,32 +43,49 @@ nixpkgs.config.permittedInsecurePackages = [
   };
 
 
-  
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-# Enable the SDDM
+  # Enable the X11 windowing system.
+    services.xserver.enable = true;
+
+  # Enable the SDDM
   # services.xserver.displayManager.sddm.enable = true;
-  
+  # services.displayManager.sddm.wayland.enable = true;
+
+  # Enable Cosmic
+  services.displayManager.cosmic-greeter.enable = true;
+  services.desktopManager.cosmic.enable = true;
+
+
   # Enable the Budgie Desktop environment.
   # services.xserver.displayManager.lightdm.enable = true;
   # services.desktopManager.budgie.enable = true;
 
   # Enable the Cinnamon Desktop Evironment
-   services.xserver.displayManager.lightdm.enable = true;
-   services.xserver.desktopManager.cinnamon.enable = true;
- 
-  # i3wm
-  # services.xserver.windowManager.i3.enable = true; 
- 
+  # services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.desktopManager.cinnamon.enable = true;
+
   # Enable the MATE Desktop Environment
-  #  services.xserver.displayManager.lightdm.enable = true;
+  # services.xserver.displayManager.lightdm.enable = true;
   # services.xserver.desktopManager.mate.enable = true;
 
+  ## Window Managers
 
-  # Enable the Pantheon Desktop Environment.
-  # services.xserver.displayManager.lightdm.enable = true;
-  # services.desktopManager.pantheon.enable = true;
+  # i3wm
+  # services.xserver.windowManager.i3.enable = true;
+
+  # hyprland
+  # programs.hyprland.enable = true;
+  # programs.hyprland.systemd.setPath.enable = lib.versionOlder cfg.package.version "0.41.2";
+  # programs.iio-hyprland.enable = false;
+  # services.hypridle.enable = false;
+  # programs.hyprlock.enable = false;
+  # programs.uwsm.enable = false;
+  # programs.hyprland.xwayland.enable = true;
+  # programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  # programs.iio-hyprland.package = pkgs.iio-hyprland;
+  # programs.hyprland.withUWSM = false;
+  # programs.hyprland.package = pkgs.hyprland;
+  # services.displayManager.dms-greeter.compositor.hyprland
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -103,18 +120,18 @@ nixpkgs.config.permittedInsecurePackages = [
     #  thunderbird
     ];
   };
- 
+
   #flatpak
   services.flatpak.enable = true;
-  
+
   #xdg
-  xdg.portal.enable = true;  
+  xdg.portal.enable = true;
 
 
   #virt-manager
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
- 
+
   #Steam
   programs.steam.enable = true;
 
@@ -130,7 +147,7 @@ nixpkgs.config.permittedInsecurePackages = [
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
    environment.systemPackages = with pkgs; [
-  vim 
+  vim
   git
   wget
   fastfetch
@@ -161,12 +178,18 @@ nixpkgs.config.permittedInsecurePackages = [
   gnome-disk-utility
   steamcmd
   steam-run
-  shotcut
+  openshot-qt
   rofi
-  feh
-  i3status
-  i3blocks
-  cmake
+ # hyprpaper
+ # hyprpicker
+ # hyprlauncher
+ # hypridle
+ # hyprlock
+ # xdg-desktop-portal-hyprland
+ # hyprsysteminfo
+ # hyprsunset
+ # hyprpolkitagent
+ # hyprshutdown
  ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -180,7 +203,7 @@ nixpkgs.config.permittedInsecurePackages = [
   # List services that you want to enable:
 
    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-   
+
 
 
 
